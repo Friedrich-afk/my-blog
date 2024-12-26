@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="">
+    <meta name="description" content="故事背景：椅子垫断更在《围攻（三十一）》章的第二十七年一个月又五天，于退休后正打环世界时被已老去的钢火法群友找到家里了。  “我也尽力进行了战斗，朋友。在我年轻时候,我像别的青年一样，要拯救世界。后来,我思想成熟了,就变得循规蹈矩了，我遵循的是人类的规矩。我去工作、读书、玩骇厉四斩。我把女人的身体抱在怀里,创造了人，这样我就征服了死亡。这不正是我常常说的我们要做的事吗?总之,我遵守了我的诺言，我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的第一篇文章">
+<meta property="og:url" content="http://example.com/2024/12/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="故事背景：椅子垫断更在《围攻（三十一）》章的第二十七年一个月又五天，于退休后正打环世界时被已老去的钢火法群友找到家里了。  “我也尽力进行了战斗，朋友。在我年轻时候,我像别的青年一样，要拯救世界。后来,我思想成熟了,就变得循规蹈矩了，我遵循的是人类的规矩。我去工作、读书、玩骇厉四斩。我把女人的身体抱在怀里,创造了人，这样我就征服了死亡。这不正是我常常说的我们要做的事吗?总之,我遵守了我的诺言，我">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-26T18:10:17.000Z">
+<meta property="article:modified_time" content="2024-12-26T18:11:38.531Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>我的第一篇文章 · fi3ework&#39;s Studio</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">fi3ework's Studio.</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">fi3ework&#39;s Studio.</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">我的第一篇文章</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                我的第一篇文章
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+</div>
+
+                <!-- 文章字数统计 -->
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/12/27</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <ul>
+<li><strong>故事背景：</strong>椅子垫断更在《围攻（三十一）》章的第二十七年一个月又五天，于退休后正打环世界时被已老去的钢火法群友找到家里了。</li>
+</ul>
+<p>“我也尽力进行了战斗，朋友。在我年轻时候,我像别的青年一样，要拯救世界。后来,我思想成熟了,就变得循规蹈矩了，我遵循的是人类的规矩。我去工作、读书、玩骇厉四斩。我把女人的身体抱在怀里,创造了人，这样我就征服了死亡。这不正是我常常说的我们要做的事吗?总之,我遵守了我的诺言，我征服了死亡，留下了我的杰作：我的孩子！”</p>
+<p>&#x3D;&#x3D;七相&#x3D;&#x3D;突然冲上前来,推开站在他前面的群友,大声狂喊:“叛徒!”</p>
+<p>他们都惊呆了。椅子垫脸色苍白,双手搭在胸前。</p>
+<p>“我?我?叛徒?”他喃喃地问。“你这话可不轻。你得收回去!”</p>
+<p>“叛徒!逃兵!”</p>
+<p>那结晶们脸色发白,开始向门外走去。七相和椅子垫这时面对面站着。七相全身冒着热气，散发出股汗臭,还夹杂着伤口腐烂的味儿。</p>
+<p>‘叛徒!逃兵!”他又大声咆哮道。“你的地位是电脑前，那才是你战斗的地方。但是你胆怯了,卡文刚一露头,你就溜掉了!你逃到女人的裙子底下躲了起来。胆小鬼!你是个太监！”</p>
+<p>“七相,”一位结晶这时打断了他，“这是同作者讲话的调子吗?你一点规矩也不懂吗?”</p>
+<p>“谁是作者？”七相挥舞着拳头说。“他吗?你们难道没长眼睛,没有头脑吗?他,钢火法的作者？他告诉了我们什么,答应了我们什么?要更新的章节在哪里?可以叫我们登上天堂的跳板：“围攻”又在哪里?这个死太监一卡文就头晕目眩,昏了过去。接着这些娘们就把他弄到手，他为她们制造子女。他说他战斗过，勇敢地战斗过,不错,他像鸡群中的公鸡一样趾高气扬过。但是你的岗位是在电脑上上，逃兵!”</p>
+<p>七相又转头斥责椅子垫说，“这个你知道。不毛的土地,不育的女人,可以由别人来开垦。你的责任是更新钢火法！我要说的就是这些!你吹牛说已经征服了死亡。哎呀!这就是征服死亡的办法吗?生儿育女为冥府渡神制造吃食!这就是儿女的意义吗?为冥府渡神制造吃食!你把自己变成他的人肉市场,给他美味佳肴。叛徒!逃兵!胆小鬼!”</p>
+<p>“兄弟,”椅子垫喃喃地说，全身开始哆嗦起来,“兄弟，请你说话客气些。”</p>
+<p>“客气？”“你伤了我的心。”</p>
+<p>他嚷道,“你怎么能够要求我同你讲话客气?有时候我真想像个寡妇似地大哭大叫,用脑袋撞石头!真该诅咒你出生的那一天,我出生的那一天,诅咒我碰到你那本该死的书的那一时刻!那时候我心中充满了希望。那时你总是走在头里,把我们带在后面,同我们谈论未来的剧情，这是多么快乐,多么自.由自在,多么丰富多彩!用一点章节你就满足了我们。还有那些星星:满天星光,真是光彩夺目!它们不是星星,是天使!不，它们不是天使，它们就是我们自己,是你的读者。我们升起又落下,而你在我们中央，像太阳一样固定不动,我们都环绕着你跳舞，你记得吗?向我要求说:‘催更我吧，催更我吧！我必须更新，这样读者就有的看了!’”</p>
+<p>七相停了一下,叹了一口气。他心中的伤口又开裂,开始流血。其他那些读者紧紧挨在一起，低着头,竭力想回忆过去,让自己恢复生气。</p>
+<p>他眼睛里迸出一滴泪。他愤愤地把它抹掉,继续叫喊。他的气还没有出完。“我是你的读者，而我呢,我这么爱你，这么信任你,于是我就答应了你,就去帮你维护群聊的风气。但是你…你……你！”</p>
+<p>他的嘴角流着口涎。他抓住椅子垫的肩膀,用力摇撼,把他紧紧贴在墙上。他又开始叫喊:“你有什么事要呆在这里?你为什么没有更新?胆小鬼!逃兵?叛徒!这就是你的成就吗?你不知道羞耻吗?我举起拳头问你:为什么,为什么你没有更新哪怕一个字？”</p>
+<p>“别说了!别说了!”椅子垫求道。他太监的地方也开始流血了。</p>
+<p>“太监椅子垫,”</p>
+<p>&#x3D;&#x3D;Charles Jacobs&#x3D;&#x3D;又插进来，“你没有怜悯心吗?你没有看到他的脚,他的手?要是你不相信,就用手摸摸他吧。他的肋边也在流血呢。”</p>
+<p>七相勉强苦笑了一声。他吐了一-口唾沫叫道:</p>
+<p>“喂,椅子垫,你什么都骗不过我一不!你太监的冲动是夜里来的。”</p>
+<p>椅子垫摇头。“ 我太监的冲动…”他哆嗦了一下,喃喃地说。</p>
+<p>“是的,太监的冲动，它就像魔鬼的脚趾，在你的手上、脚上、肋边踩出了红斑,你就可以欺骗全世界，欺骗你自己。为什么你那样看着我?你为什么不回答?胆小鬼!逃兵!叛徒!”</p>
+<p>椅子垫闭上眼睛。他感到一阵头晕,但是他挣扎着,不使自己倒下。</p>
+<p>“七相,”他说,声音颤抖着，“你从来不受人力的限制。你忘记了人的灵魂是一支箭,它可以向天空高射,但是到头来还要落在地上。生活在人间意味着要剪除翅膀。”</p>
+<p>七相听到这话,更加愤怒了。“你真不要脸!”他叫道。</p>
+<p>“难道你,钢火法的作者，群里结晶的王,最后就落到这个地步?人间的生活要你吃面包,再把面包变成翅膀,要你喝水,再把水变成翅膀。人间的生活要你长翅膀，而最后你就长着翅膀，章节像羽毛一样落在我们手上。这都是你告诉我们的，你,你这个叛徒!这都不是我的话,这都是你的话。我怕你忘掉,才提醒你的!”</p>
+<p>“&#x3D;&#x3D;清寒&#x3D;&#x3D;,你在哪里?你过来!打开你的手机，你总是带在身边,挨着心口,就像我带刀子一样。打开你的账号记录。它们已被时间的蠹虫和汗水腐蚀了,不过还可以认清不少字。打开你的记录,请你读出来,让这位先生可以听到,重新记起。”</p>
+<p>“只要还有一个人在看，我都会把这本书写下去.”</p>
+<p>“现在你又落到什么地步,拔了毛的公鸡!哭哭啼啼地在这里说:‘人间的生活要你剪除翅膀。’”</p>
+<p>“哈!别在我面前现眼，胆小鬼!如果生活不是闪电和响雷,我要它干什么?别凑过来,&#x3D;&#x3D;句号&#x3D;&#x3D;,你这风向标! 还有你,侠义的&#x3D;&#x3D;老猫&#x3D;&#x3D;。别叫喊,。我不会碰他的。我为什么要举手打他?他已经死了,埋了！他虽然仍然站着,会说话,会哭,但他已经死了。一具尸体。让阎王去饶恕他吧,我可不。但愿那些可怜读者的血泪落在他的脸上!”</p>
+<p>那些可怜的结晶们承受不住了,他们都瘫倒在地上,跌成一堆。他们的记忆被唤醒了;他们想起以往了,想起了每日更新的日子。他们呻吟着,号叫着,脑袋撞着地板。</p>
+<p>椅子垫也突然哭泣起来。他叫道:‘我的兄弟,请原谅我!”</p>
+<p>他开始冲向七相的怀抱。但他向后一跳,伸出手来挡住,不让他靠近。</p>
+<p>“别碰我!”他叫道。“我什么也不再相信了;现在我谁也不信了。你这满嘴谎言的骗子！”</p>
+<p>椅子垫被绊了一下,他看看四周，想抓住一件什么东西来支撑自己。女群友们趴在地上,扯着头发喊叫;结晶们则抬头看着他,又气又恨。</p>
+<p>“不错,我是个叛徒,逃兵,胆小鬼,”他喃喃地说。</p>
+<p>“现在我认识到了:我已经失败了!是的,是的，我应该做那磨上的驴,但我失去了勇气,断更了，逃走了。请原谅我,读者们,我骗了你们。唉,要是我能从头再活一遭!”</p>
+<p>他说着话就瘫倒在地上。他把脑袋拼命往地砖上撞。</p>
+<p>“伙伴们,我的老读者,请你们对我说句好话,安慰安慰我。我完了，我失败了!我伸出手。你们中间就没有-一个起来把月票放在我的掌心里,或者对我说句好话?没有一个?没有一个?甚至你也不，亲爱的&#x3D;&#x3D;梨花&#x3D;&#x3D;?甚至你也不,&#x3D;&#x3D;清寒&#x3D;&#x3D;?”</p>
+<p>我能怎么说，说什么?”受他钟爱的管理们哭着道。</p>
+<p>“你欺骗了我们，”梨花抹去眼泪说，“七相是对的，你食言了。我们等你更新的时光都白白浪费了。”</p>
+<p>这一群老的不像话的人儿一下子齐声叫起来。</p>
+<p>“胆小鬼!叛徒!逃兵!”</p>
+<p>“胆小鬼!叛徒!逃兵!”</p>
+<p>&#x3D;&#x3D;女魔&#x3D;&#x3D;哀哭道:“我的工作全都白费了，白费了,白费了!我绞尽脑汁地为你书写优美的同人。这很难办,但是我还是做到了。我常常对自己说，在未来的群聊里,读者们会打开群文件说:‘今天看《错影历镜》!’这种想法像抵在背的刀子样催着我写啊写的。但是如今,我写同人的动力全都烟消云散,一切都要怪你这个忘恩负义的东西,你这个叛徒!你早应该猝死在小黑屋。是的,哪怕只是为了我的缘故,为了拯救这些同人,你也早该死了!”</p>
+<p>这群人儿又一次齐声喊叫。</p>
+<p>“胆小鬼!逃兵!叛徒!”</p>
+<p>“胆小鬼!逃兵!叛徒!”</p>
+<p>这时&#x3D;&#x3D;休沐&#x3D;&#x3D;从门外冲进来。“尹紫电。”</p>
+<p>他叫道，“如今大家都抛弃你,叫你是太监，但我不会抛弃你，我不会，侍从官也不会!我们说过青轴在响。因此我不会离开你的身边。我等你。”</p>
+<p>清寒站起来。“咱们走吧!”他叫道。“雪鸡,你走在头里!”</p>
+<p>他们气喘吁吁地站了起来。椅子垫趴在地上，双臂张开,面孔朝下。他占据住整个院子。他们向他伸出拳头叫喊:</p>
+<p>“胆小鬼!逃兵!叛徒!”</p>
+<p>“胆小鬼!逃兵!叛徒!”</p>
+<p>他们一个个接着喊：“胆小鬼!逃兵!叛徒!”</p>
+<p>然后消失了。</p>
+<p>椅子垫痛苦地张望了一下。只剩下他自己了。院子和房子、树木、邻居的门、小区都消失了。没有东西留下,只有他脚下的地板;石块上印着血迹。在远处下面,有一群人:黑暗中成千上万的人头。</p>
+<p>他竭尽全力想要弄清楚自己在哪里,他是谁,他为什么感到痛楚。他想把他要叫的一声叫完，他要叫“只要还有一个人在看…….”他想张开嘴唇,却又张不开。他头晕起来,快要昏厥了。他像被扔到深坑里头要坠下去了。</p>
+<p>但是突然,正在他往下落、快死的时候，地上大概有人可怜他了，因为他突然不往下坠了，他教人拉住了，面前有人伸过来一条毛巾，他感到有水在润湿他的嘴唇和鼻孔。他深深地吸了一口这气味，复苏过来。他鼓起了胸膛,抬头看了看上空,发出一声凄厉痛心的喊叫:我会把这本书写下去！</p>
+<p>接着他感到精疲力竭,马上低下了头。</p>
+<p>他感到手、脚、心痛得厉害。他的视力恢复了，他看到了血、键盘。屏幕发出黯淡的光芒，显示着：<strong>3846字符</strong>。</p>
+<p>他的脑袋发抖。突然他想起了自己在哪里,他是谁,他为什么感到痛楚。一阵不可控制的狂喜侵袭了他。不,不,他不是个胆小鬼,不是个逃兵,不是个太监。不，他是在码字。他光荣地坚持了他的立场直到最后一刻。他信守了诺言!</p>
+<p>他喊了一声“更新，更新”就昏厥了。</p>
+<p>断更诱惑俘虏了他这么久,使他迷了途。</p>
+<p>游戏,婚姻,子女都是假的;那些形容枯槁年老体衰的口中叫着胆小鬼、逃兵、叛徒的老头儿也都是假的。这一切，这一切都是熬夜昏过去时的幻觉。他的读者们都还在等他,事业兴旺。</p>
+<p>他们像印斯茅斯的鱼人那样漂洋过海在各个群里传播钢火法。结果一切都如所愿一光荣归于血狼!</p>
+<p>他叫出了一声胜利的呼喊:已经完成了!</p>
+<p>他喊出这句话好像是在说:一切都已结束,一切又从此开始。</p>
+<p>他点击了更新键，死了。</p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author：<a href="http://example.com">John Doe</a>
+            <p>Link：<a href="http://example.com/2024/12/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">http://example.com/2024/12/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</a>
+            <p>Publish date：<a href="http://example.com/2024/12/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">December 27th 2024, 2:10:17 am</a>
+            <p>Update date：<a href="http://example.com/2024/12/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">December 27th 2024, 2:11:38 am</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2024/12/27/hello-world/" title="Hello World">
+                    <div class="prevTitle">Hello World</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:12345@qq.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+                <span class="iconfont-archer wechat" title="wechat">
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 2
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2024/12/27/hello-world/">Hello World</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/27</span>
+            <a class="archive-post-title" href="/2024/12/27/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">我的第一篇文章</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "http://example.com",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+    </body>
+</html>
