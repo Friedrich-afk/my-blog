@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="被猹丝血反杀的闰土">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="被猹丝血反杀的闰土">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="">
+    <meta name="description" content="1.关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务在这一年，普鲁士领主、其城镇和当地骑士团体间爆发了严重纷争。纷争主要由五种不良统治行为（póser regír）及领主对这些地区施加的沉重负担（beschwerung）而引起。普鲁士的领主们为了寻求解决方案而将此事呈交给罗马凯撒请求调解。双方在凯撒的护送下来到新城（Newn Stat），他们的需求和问题在那里得到充分审">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://friedrich-afk.github.io/2024/12/27/%E3%80%8A1454-1467%E5%B9%B4%E5%A5%A5%E5%9C%B0%E5%88%A9%E7%BC%96%E5%B9%B4%E5%8F%B2%EF%BC%9A%E6%A0%A1%E5%8B%98%E3%80%81%E7%BF%BB%E8%AF%91%E4%B8%8E%E6%B3%A8%E9%87%8A%E3%80%8B%EF%BC%88Die%20%C3%96sterreichische%20Chronik%20der%20Jahre%201454-1467%EF%BC%9AEdition,%20%C3%9Cbersetzung,%20Kommentar%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务在这一年，普鲁士领主、其城镇和当地骑士团体间爆发了严重纷争。纷争主要由五种不良统治行为（póser regír）及领主对这些地区施加的沉重负担（beschwerung）而引起。普鲁士的领主们为了寻求解决方案而将此事呈交给罗马凯撒请求调解。双方在凯撒的护送下来到新城（Newn Stat），他们的需求和问题在那里得到充分审">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-27T09:12:12.595Z">
+<meta property="article:modified_time" content="2024-12-27T09:21:07.906Z">
+<meta property="article:author" content="被猹丝血反杀的闰土">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/my-blog/assets/favicon.ico">
+    <title>fi3ework&#39;s Studio</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/my-blog/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/my-blog/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/my-blog/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/my-blog/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/my-blog/scripts/main.js" as="script">
+    <link rel="preload" href="/my-blog/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/my-blog/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/my-blog/">fi3ework's Studio.</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/my-blog/">fi3ework&#39;s Studio.</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name"></a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/my-blog/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                [Untitled Post]
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+</div>
+
+                <!-- 文章字数统计 -->
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/12/27</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/my-blog/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/my-blog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="1-关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务"><a href="#1-关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务" class="headerlink" title="1.关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务"></a>1.关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务</h2><p>在这一年，普鲁士领主、其城镇和当地骑士团体间爆发了严重纷争。纷争主要由五种不良统治行为（póser regír）及领主对这些地区施加的沉重负担（beschwerung）而引起。普鲁士的领主们为了寻求解决方案而将此事呈交给罗马凯撒请求调解。双方在凯撒的护送下来到新城（Newn Stat），他们的需求和问题在那里得到充分审查。</p>
+<p>双方随后将各自对彼此主张的判定与权利提交仲裁并愿以合法方式解决争议。审理后的裁决明确规定，骑士团体与城镇必须以过去的方式完全服从其领主之统治。作为回报，普鲁士的领主需要按照传统（alts herkomen）以仁慈的方式对待其忠诚的属民，而不能施加更大负担。</p>
+<p>普鲁士（Preẃssen）的骑士团体与城镇对裁决结果感到不满，认为其领主以金钱（gellt）影响裁决使其对领主有利。于是他们在凯撒的护送下返回普鲁士，但途中遭遇袭击，一些人被俘而其财物被夺。城镇得知裁决结果不利于他们的领主权利且使节在途中被袭击遭俘后决定采取行动。</p>
+<p>城镇派遣重要使节前往波兰国王（kunig von Polan）处请求其成为他们的领主（herren）。他们向国王宣誓效忠（ayd und gelúb）并将所有城镇和城堡对其开放让国王及其军队驻扎其中。此举令普鲁士领主感到愤怒，领主因骑士团体与城镇已投靠波兰而召集兵力在国内集结，意图通过武力重新将骑士团体与城镇置于其统治之下。</p>
+<p>普鲁士领主召募了大量雇佣兵和外籍军队进入领地，希望以武力压制骑士团体与城镇的反叛。但骑士团体与城镇也迅速集结兵力并获得波兰的军事支援。波兰派遣大量士兵和雇佣兵进入普鲁士使德意志领主之努力未能奏效。</p>
+<p>骑士团体与城镇最终在波兰国王的支援下取得优势占据整个领地，仅剩马尔堡（Mergenburg）主堡未能攻克。普鲁士的领主在马尔堡集结大批士兵试图抵抗，但最终未能成功。</p>
+<h2 id="2-公元1457年"><a href="#2-公元1457年" class="headerlink" title="2.公元1457年"></a>2.公元1457年</h2><p>在这一年，普鲁士（Preußischen）领主出其不意地率军袭击波兰（Polen），他们杀死了许多波兰士兵并在战场上站稳脚跟。但因欠下雇佣兵大笔赔偿金和军饷，他们不得不将他们的主堡——马尔堡（Marienburg）及其他攻占的城堡作为抵押用以支付欠款。波兰一方也同样因双方进行了极为激烈的战争而无力向雇佣兵进行支付。</p>
+<p>雇佣兵最终召开会议并决定将城堡交给能够支付他们军饷的一方。普鲁士领主将马尔堡抵押给一些倾向于骑士团体的有影响力雇佣兵，这些雇佣兵不希望城堡落入波兰或其他敌手之手。他们因此同意暂时放弃索取军饷直到普鲁士领主筹集资金赎回城堡。他们将马尔堡交给雇佣兵及其首领守卫并命令他们在被支付后立即归还城堡。随后雇佣兵离开该地。</p>
+<p>与此同时，波兰及一些城镇秘密与马尔堡的首领达成协议，承诺支付一笔巨款以换取马尔堡的控制权。马尔堡的首领背弃了自己的忠诚与荣誉，违背了对其盟友的誓言。他收取这笔款项并在一个对他有利的时机将马尔堡秘密交给波兰国王的势力，而未通知普鲁士领主或其他相关人员。</p>
+<p>这位首领之后带着这笔款项去了维也纳（Wien）并娶了安德烈·贡多尔弗（Andre Gundorfer）之遗孀为妻。当雇佣兵得知他在维也纳结婚后便向当地议会请愿，要求不要容忍这样一位背叛誓言、忠诚和荣誉的罪人。他们指控此人违背誓言将马尔堡交给波兰而未征求普鲁士领主同意。</p>
+<p>维也纳的市民拒绝给予他公民权。于是他从奥斯瓦尔德·赖霍尔夫（Oswald dem Reicholf）手中购得奥塔克林（Ottakring）的一处庄园并将其改建为防御工事。一天他去教堂时，被那些追捕他的前盟友雇佣兵出卖。这些雇佣兵在他从教堂出来时在墓地对他发起袭击，将其抓捕并强掳。自此之后再无人知其下落。</p>
+<p>罗马凯撒后来没收其全部财产并将其中一部分作为嫁妆还给他的妻子。</p>
+<h2 id="3-关于彗星"><a href="#3-关于彗星" class="headerlink" title="3. 关于彗星"></a>3. 关于彗星</h2><p>在1456年圣维特节（圣维图斯日，heiligen Vitus）附近的某天，一颗所谓的彗星（Komet）出现在西方的天空中。它呈现出燃烧般的形态并带一条长尾，尾巴的方向指向波西米亚（Böhmen）。世界上随后接连发生大洪水、可怕的瘟疫、谋杀、战争、抢劫及人们间的纷争。此后无论精神亦或世俗领域还爆发严重的食粮暴涨，一个国家对另一个国家发动战争，一个君主对另一个君主进行对抗，无论是在宗教领域还是世俗领域，几乎涉及了世界上的每一个王国。</p>
+<h2 id="4-关于突厥凯撒与贝尔格莱德要塞"><a href="#4-关于突厥凯撒与贝尔格莱德要塞" class="headerlink" title="4. 关于突厥凯撒与贝尔格莱德要塞"></a>4. 关于突厥凯撒与贝尔格莱德要塞</h2><p>不久之后，在前文提到的年份的圣玛格丽特节（heiligen Margareta）附近，突厥凯撒（türkische Kaiser）率一支由突厥人和异教徒组成之大军包围贝尔格莱德（Belgrad）的要塞和城市。他带来包括火炮和迫击炮在内的极其精良而沉重之战争器械，这些武器强大到足以摧毁任何坚墙。</p>
+<p>他命令将这些武器运至城墙前方，从那里轰击这座异常坚固的要塞塔楼。他随后摧毁了城市的大部分区域，使其陷入攻占前的混乱状态并在护城河中修建了长长的地下通道，以便其士兵能更加安全地接近城墙。</p>
+<p>在圣玛利亚玛达肋纳节（heiligen Maria Magdalena）这一天，他发动了一次猛烈的进攻，对要塞发起了持续三天的攻势。凭借全能上帝的恩典，这位上帝并未抛弃他的羊群，而是愿意帮助他们抵御肆虐的豺狼，结果突厥军队最终放弃了进攻。</p>
+<p>在突厥军队撤退时，基督徒突然袭击了异教徒并杀死了数千人且夺其所有武器并将这些武器带回城市和护城河中。</p>
+<p>摄政约翰·匈雅提<strong>（Johannes von Hunyadi）和</strong>约翰·卡皮斯特拉诺兄弟（Bruder Hans Capistranus）随后抵至战场。他们提醒基督徒铭记耶稣的殉难（Martyrium Jesu）以此鼓励他们勇敢地面对这些“地狱之犬”，因为上帝显露了他的恩典和慈悲。人们应当认识到上帝显然在为他们而战，尽管他们人数稀少却杀死了如此多的异教徒与突厥人。</p>
+<p>摄政为军队提供了食物和金钱以此帮助他们。约翰·卡皮斯特拉诺兄弟手持十字架将其高举在城墙上对异教徒展示。之后摄政王与卡皮斯特拉诺兄弟越过多瑙河回到他们的军队，而基督徒们则高兴地留在了要塞中。</p>
+<p>当突厥凯撒得知基督徒杀死了他如此多的士兵并夺走了所有武器后，便于圣玛利亚玛达肋纳节后的周四夜里秘密撤退。突厥人点燃许多装有武器和补给的船只，部分船只被凿沉，以防落入基督徒之手。</p>
+<p>之后再无人知晓这位突厥凯撒的下落，但有传言称他也已去世。</p>
+<p>有六千名波兰人和德意志人据上帝的旨意为拯救神圣的信仰而抵达贝尔格莱德要塞。他们给异教徒和突厥人造成巨大损失。由此可以看出，凡是将自己托付于全能的上帝、维护上帝的荣耀并为信仰而战的人都会最终在真正的信仰中找到归宿。</p>
+<p>不久之后，在圣雅各节后的星期三，匈牙利国王的摄政约翰·匈雅提于贝尔格莱德因瘟疫去世。</p>
+<h2 id="5-关于十字军东征对抗土耳其人的军事行动"><a href="#5-关于十字军东征对抗土耳其人的军事行动" class="headerlink" title="5.关于十字军东征对抗土耳其人的军事行动"></a>5.关于十字军东征对抗土耳其人的军事行动</h2><p>在上述年份的圣劳伦蒂乌斯节（heiligen Laurentius）附近某一天，许多基督徒在不同国家接受了十字架的标志（Zeichen des Kreuzes），并组成军队对抗土耳其人。然而，他们只到达了贝尔格莱德（Belgrad），许多人由于缺乏粮食选择返回。从那时起这些战士被称为“十字军”（Kreuzer）。</p>
+<p>许多十字军集结在巴伐利亚的高地地区，以及乌尔姆（Ulm）、纽伦堡（Nürnberg）、雷根斯堡（Regensburg）、萨尔茨堡（Salzburg）和帕绍（Passau）。他们乘坐装载粮食、葡萄酒、面粉及其他补给的船只前往维也纳（Wien）。其中大部分战士装备精良，他们的船只上悬挂着绘有<strong>耶稣受难器物（Arma Christi）</strong>或红十字的精美旗帜。</p>
+<p>此外，来自维也纳城及奥地利（Österreich）地区的约三千人也加入了十字军。他们带来了由城镇资助或个人财产提供的粮食、武器和其他物资，并装备良好。他们在布达（Buda）集结，等待全部军队会合，以便由尊贵的国王拉斯洛（König László）为他们指定指挥官，这些指挥官带领他们前往富托格（Futog），在那里他们再次等待国王的指令。</p>
+<p>约六千名战士驻扎在富托格，他们对匈牙利人保持警惕并建立坚固的防御工事。但十字军却对匈牙利匈雅提包括牲畜和庄稼内的财产造成巨大损失。这导致匈雅提不断向指挥官抱怨。指挥官在十字军面前对匈雅提宣布一项决定：如果有人继续对匈雅提造成损害，并被抓到，他们将被惩罚。</p>
+<p>由于这一规定，许多十字军被匈牙利人秘密杀害。</p>
+<h2 id="6-关于拉斯洛国王进军匈牙利对抗土耳其人的军事行动"><a href="#6-关于拉斯洛国王进军匈牙利对抗土耳其人的军事行动" class="headerlink" title="6.关于拉斯洛国王进军匈牙利对抗土耳其人的军事行动"></a>6.关于拉斯洛国王进军匈牙利对抗土耳其人的军事行动</h2><p>在上述年份的圣巴托洛缪节（Bartholomäus）后的星期三，尊贵的拉斯洛国王（König László）在其十七岁时，从维也纳（Wien）率军对抗土耳其人。他的随行人员包括巴伐利亚公爵奥托（Herzog Otto von Bayern）和采列伯爵乌尔里希（Graf Ulrich von Cilli），以及他们的侍从。然而，来自他自己领地的随军者寥寥无几，仅有贵族亨利·冯·罗森堡（Heinrich von Rosenberg）和威廉·冯·列支敦士登（Wilhelm von Liechtenstein）前往效忠他们的合法领主。</p>
+<p>拉斯洛国王首先到达布达（Ofen），在此稍作休息后继续前往富托格（Futog）与十字军（Kreuzer）会合。他在那里等待到匈牙利摄政约翰·匈雅提之子拉斯洛·匈雅提（Graf László Hunyadi）的加入。匈雅提在其父去世后占据贝尔格莱德要塞及其他城堡。经过谈判，拉斯洛·匈雅提同意向国王开放贝尔格莱德，并承诺对国王和采列伯爵效忠。</p>
+<p>采列伯爵的仆人兰伯格（Lamberger）在谈判期间扮演双重角色。他是采列伯爵的密友，却可能因贿赂和承诺倒向匈雅提一方。兰伯格向采列伯爵保证匈雅提值得信任，并否认有关匈雅提秘密在城堡内藏匿大批士兵的传言。采列伯爵因此放心地随国王及其他贵族前往贝尔格莱德。</p>
+<p>拉斯洛·匈雅提在贝尔格莱德率众迎接国王、采列伯爵及其他贵族，并再次保证他们在城堡内的生命与财产安全。他还重申他本人及其弟马加什（Mátyás）对国王的忠诚。国王与采列伯爵及随行的贵族随后登岸由匈雅提引入城堡。</p>
+<p>匈雅提先接纳了携带绿色旗帜的罗兹贡的雷诺德（Reinold von Rozgon）及其随从，之后接纳了国王、采列伯爵及部分随从。当国王与采列伯爵进入城堡后城门却被立即被关闭，其余随从被命令撤回至城外的十字军营地。匈雅提下令不得再许任何人进入。</p>
+<p>事实上，在拉斯洛国王在布拉格（Prag）的加冕典礼上，匈牙利摄政约翰·匈雅提（Johannes von Hunyadi）、波希米亚摄政乔治·波季布拉德（Georg von Podiebrad）以及乌尔里希·艾岑格（Ulrich Eitzinger）之间曾秘密达成协议，共同反对采列伯爵。他们不满采列伯爵对国王拉斯洛的影响，因此策划将采列伯爵和国王拉斯洛引至匈牙利，假意向他们保证匈牙利的摄政权。</p>
+<p>采列伯爵对此深信不疑，随国王从维也纳匆忙前往匈牙利，试图通过快速行动占领城堡并控制摄政权。匈牙利的大部分权贵敌视匈雅提家族，担心其因财富和势力而威胁到他们的地位。</p>
+<p>采列伯爵继承了父亲的遗产，预计他将接替父亲成为摄政（Reichsverweser）并统治匈牙利。然而，正是这些承诺最终导致了采列伯爵的死亡。</p>
+<p>晚餐过后，拉斯洛·匈雅提伯爵（Graf László）前来拜见国王，并以亲切的匈牙利话安抚国王，对他表示最高的忠诚并关心他的安危。匈雅提对采列伯爵也是如此表现。当夜晚降临时，采列伯爵开始后悔进入这座城堡，他内心充满了巨大的恐惧。他发誓如果上帝帮助他逃出这座城堡，他将再也不会进入任何一座匈牙利城堡，除非这座城堡归他所有。他整夜身穿一件防护上衣躺在房间里无法入睡。</p>
+<p>午夜过后，城堡的守卫开始吹口哨、敲击鼓声，伴随着许多令人不安的喊叫声。城墙和大门都被守卫严密地把守了起来。天亮时，采列伯爵起身洗脸，并思考如何与国王一起逃出城堡。</p>
+<p>与此同时国王参加了弥撒。他在弥撒结束后回到房间，有人告诉他，如果他愿意到城门口，守卫一定会为他打开城门，而采列伯爵随后会与他会合。</p>
+<p>采列伯爵也在听弥撒。弥撒尚未进行到一半时，兰伯格（Lamberger）来到采列伯爵身边，告知匈雅提伯爵和匈牙利贵族正在等他商议重要事务。采列伯爵回答说，他希望弥撒结束后再去见他们。</p>
+<p>兰伯格随后离去，但在弥撒尚未结束时，又回来催促采列伯爵，并问他贵族们还要等多久，因为商议的事务十分紧急。采列伯爵再次回答：“弥撒结束前，我不会离开！弥撒结束后，我会立刻前往。”</p>
+<p>弥撒结束后，采列伯爵与兰伯格及几名侍从一起进入一个房间，拉斯洛·匈雅提伯爵和几位匈牙利贵族在此等候。采列伯爵的侍从被挡在门外，未被允许进入房间。</p>
+<p>只有兰伯格（Lamberger）与采列伯爵（der von Cilli）一起进入房间。当所有人聚齐后，兰伯格走到众人面前说道：“我已经将你们召集在此，现在你们自行解决。”说完，他便离开了房间。</p>
+<p>拉斯洛·匈雅提伯爵随后转向采列伯爵说：“采列伯爵！我父与我这一生从未对你造成伤害，而你却试图剥夺我们的生命、财产、忠诚和荣誉，你确是想这么做的。”听到这些话的采列伯爵意识到自己命在旦夕，但他仍回答说：“你对我的指控并不公正，因为我一生都真诚地为你和你的父亲效力。”</p>
+<p>就在此时，匈牙利人拔出他们的大弯刀向采列伯爵袭来。采列伯爵见状，立即拔剑攻击拉斯洛伯爵。他的剑砍中了拉斯洛伯爵的手指和头部，但由于拉斯洛伯爵的手指戴着一个巨大的金戒指，戒指保护了他，否则采列伯爵这一剑可能会直接砍下他的手指。显然，采列伯爵试图通过这一剑置拉斯洛伯爵于死地。</p>
+<p>当匈牙利人看到拉斯洛伯爵受伤后，便更加猛烈地攻击采列伯爵。然而，由于采列伯爵穿着一件防护上衣，他们无法伤害到他。于是，他们专门攻击他的手臂和腿，直到他倒地，随后将他杀死。</p>
+<p>当采列伯爵倒在他们面前时，其中一名叫塞拉迪·米歇尔（Seladij Michel）的匈牙利人将他的尸体抬到一张长凳上，用剑砍下了他的头。随后，他们将他的头颅插在长矛上，直到第三天才归还，而尸体则被保留在城堡内直到第四天。他们最终将尸体交还给他的随从，这些人将他的遗体运回采列（Cilli），并在那里安葬。</p>
+<!--采列家族的血脉至此终结-->。此事发生在1456年圣马丁节（Martini）前的星期二。
+
+<p>当尊贵的拉斯洛国王（König László）听到喧嚣声并看到匈牙利人（Ungarn）挥舞着裸露的剑四处奔走时，他大为震惊，问道：“这是什么意思？”随后，有人前来告诉他：“陛下，他们杀死了您的表亲采列伯爵（den von Cilli）！”</p>
+<p>一些匈牙利人试图持剑冲向国王的房间，但一名全副武装的匈牙利人挡住了他们的去路并制止了他们。同时，一些匈牙利贵族来到国王面前，向他解释了事情的经过：采列伯爵试图刺杀拉斯洛·匈雅提伯爵（Graf László），但匈雅提的朋友们获悉了此事，愤怒之下杀死了采列伯爵。他们向国王保证，他自己以及随从都不会受到威胁，并请他安心。</p>
+<p>但匈雅提伯爵依然扣押了许多国王的随从，并将他们关押在一个房间里。后来，这些人被大瓦拉几亚主教（Bischof von Großwardein）赎回。随后，国王命令十字军（Kreuzer）返回家乡，他们遵从了这一命令。然而，许多十字军在返乡途中去世，仅有少数幸存。这被视为他们因激怒全能的上帝而受到的惩罚，因为他们此前的行为被认为是邪恶的。</p>
+<p>此后，拉斯洛·匈雅提伯爵这个“愤怒的狼和杀人犯”（wütende Wolf und Mörder），挟持着尊贵的拉斯洛国王这位“无辜的小羔羊”（unschuldige Lämmlein），将他带往特梅什堡（Temesvár）。国王在途中对匈雅提伯爵表现出极大的友善，似乎非常信任和亲近他。正是这种表现救了国王一命，因为很明显，匈雅提伯爵原本计划与他的父亲约翰·匈雅提一样杀害国王及其表亲采列伯爵。上帝显然并未允许这样的事情发生在这天。</p>
+<p>哦，有谁劝诫了这位年轻的国王，让他在这样危险的时刻，以他巨大的礼貌和美德表现出如此的仁慈和智慧，甚至拉着匈雅提伯爵的手臂。这种行为软化了匈雅提伯爵的冷酷之心，直到命运的时刻到来。</p>
+<p>后来，国王从泰梅什堡启程前往布达。在穿越这片广阔的平原时，许多忠诚的随从不得不无食无水地徒步行走，同时因匈牙利人的威胁，他们的生命安全也得不到保障。</p>
+<p>当拉斯洛国王抵至布达后，匈牙利最有权势的领主们纷纷前来拜见。他们之中的拉斯洛·匈雅提伯爵及其弟马加什已经控制了布达城堡、国王及整座布达城。</p>
+<p>随后，帕绍（Passau）主教及其他贵族和顾问从维也纳（Wien）前往布达拜见国王。特别是维也纳城派出了许多装备精良的市民，他们赶往布达以支援国王。同时，扬·伊斯克拉（Jan Iskra）也带着一支强大的随从秘密抵达布达，他的部下悄悄将武器运入城堡。</p>
+<p>尽管如此，国王依然对拉斯洛伯爵表现出谄媚之态，总是将他留在自己身边并让他陪伴在餐桌旁。有一次国王甚至还责备拉斯洛伯爵，因为他很少与国王同席进餐。</p>
+<h2 id="7-公元1457年事件"><a href="#7-公元1457年事件" class="headerlink" title="7.公元1457年事件"></a>7.公元1457年事件</h2><p>在这一年，尊贵的领主亨利·冯·罗森堡（Herr Heinrich von Rosenberg）病倒了。他被从布达（Ofen）送往维也纳（Wien），在那里，他将灵魂交托于全能的上帝。同年，尊敬的方济会（Franziskanerorden de Observantia）修士汉斯·冯·卡皮斯特拉诺（Hans von Capistran）去世。他是上帝和神圣信仰的使者，安葬于伊洛克（Ilok）。</p>
+<p>在前一年圣诞节后不久，阿普利亚（Apulien）发生了一场大地震，震撼程度巨大，超过七十座城市、堡垒和集市被摧毁并沉没。在这次地震中，大约三万人于12月4日遇难。</p>
+<p>到了狂欢节期间，拉斯洛·匈雅提伯爵注意到拉斯洛国王（König László）聚集了许多德意志人和波希米亚人的支持者，因此在城堡和城市中占据了优势，匈雅提伯爵无法再向国王施加自己的意志。</p>
+<p>于是，匈雅提伯爵设下诡计，提议在布达城外举行一场骑马比赛，并邀请国王出席。他秘密召集了一支约六百名骑兵的部队，并要求布达周围的匈雅提在比赛当天进入城市。当天大约有一千名匈雅提聚集。</p>
+<p>他与骑兵约定，当国王出城观看比赛时，他们要试图在国王与城之间形成阻隔，使国王及其随从无法返回城市，然后将国王俘虏并带走。同时，他命令匈雅提在听到国王被俘的消息后，占领城市和城堡。</p>
+<p>上帝并未允许这一计划成功。提前到达的骑兵在国王离开城市之前就被发现。事情迅速传开，国王选择留在城堡内并聚集更多的德意志人和波希米亚人以增强对抗拉斯洛伯爵之力量。</p>
+<p>于是匈雅提伯爵将骑兵部队派往多瑙河对岸的旧布达（Alt-Ofen），并允许匈雅提各自返回家乡。</p>
+<p>在上述年份第二个四旬期主日后的星期三，尊贵的拉斯洛国王在布达的城堡中逮捕拉斯洛·匈雅提伯爵及其弟马加什。拉斯洛·匈雅提于同日晚祷时被斩首。</p>
+<p>此举是为报复匈雅提伯爵谋杀其表亲采列伯爵罪行及他与同伙试图袭击国王之阴谋。国王还逮捕了匈雅提其他同伙约十人，其中包括塞巴斯蒂安·冯·罗兹贡（Sebastian von Rozgon）、埃姆雷希·冯·卡尼萨（Emreich von Canisa）、保罗·莫德雷尔（Paul Modrer）等人。</p>
+<h2 id="8-扬·维托韦茨在采列俘虏凯撒顾问的事件"><a href="#8-扬·维托韦茨在采列俘虏凯撒顾问的事件" class="headerlink" title="8. 扬·维托韦茨在采列俘虏凯撒顾问的事件"></a>8. 扬·维托韦茨在采列俘虏凯撒顾问的事件</h2><p>在采列伯爵乌尔里希（Graf Ulrich von Cilli）去世后，罗马凯撒（Römischer Kaiser）据协议接管采列伯爵的城堡和领地，随后前往采列（Zelje）。这一举动引发了一些匈牙利人和德意志人（尤其是那些在采列伯爵生前与他关系密切的人）的不满。</p>
+<p>当时有一些身居高位的官员与采列伯爵关系密切，他们曾因采列伯爵的提携而获得高职并在国王身边拥有重要影响。这些人暗中争取国王的支持并秘密写信给扬·维托韦茨（Jan Vitovec）。维托韦茨曾长期担任采列伯爵的总指挥官，对当地情况十分熟悉。他们要求维托韦茨秘密组织一支军队进攻采列，以试图控制罗马凯撒或他的顾问，并承诺国王拉斯洛（König László）会给予他丰厚的回报。</p>
+<p>维托韦茨按照计划秘密组建了一支军队。然而，这一计划被泄露给了罗马凯撒，凯撒随即撤入采列的上堡（obere Burg），但维托韦茨对此并不知情，以为凯撒仍在城市下方的住宅内。</p>
+<p>在圣乔治节（heiligen Georg）后的星期五清晨，维托韦茨率军进攻采列，突袭了这座城市。他俘虏了古尔克主教（Bischof von Gurk）、汉斯和格奥尔格·翁格纳德（Hans und Georg Ungnad）、一位来自施图本贝格（Stubenberg）的贵族，以及莱德文科（Ledvenko）和其他许多贵族及其随从。他允许这些随从在提供担保和人质后获释，限定他们必须在某一天之前返回，而凯撒的顾问则被维托韦茨关押起来。</p>
+<p>然而，关于维托韦茨的身份有一种说法：当他实施这一行动时，他实际上仍是罗马凯撒的顾问和随从。人们因而对他并未产生怀疑。但他实际上已向罗马凯撒（Römischer Kaiser）表示了背叛，并将这一声明寄往格拉茨（Graz）。但这份声明未能及时送达凯撒。</p>
+<h2 id="9-葡萄藤遭遇霜冻"><a href="#9-葡萄藤遭遇霜冻" class="headerlink" title="9. 葡萄藤遭遇霜冻"></a>9. 葡萄藤遭遇霜冻</h2><p>奥地利的山区与山谷中的葡萄藤在上述年份的受难节（Karfreitag）遭遇霜冻，以至于该年的葡萄酒产量很少。不过所酿之酒品质依然很好。</p>
+<h2 id="10-拉斯洛国王从对土耳其人的远征返回维也纳"><a href="#10-拉斯洛国王从对土耳其人的远征返回维也纳" class="headerlink" title="10. 拉斯洛国王从对土耳其人的远征返回维也纳"></a>10. 拉斯洛国王从对土耳其人的远征返回维也纳</h2><p>在前述年份的圣灵降临节前夕，最尊贵的君主、国王拉斯洛从对土耳其人的征战中返回，进入其城市维也纳，并带来了俘虏匈雅提·马加什和保罗·莫德雷尔（Paul Modrer）。这两人被囚禁在城堡的女眷房中。稍后在同一年的圣斯特凡发现日（St. Stephani Auffindung），尊贵的波希米亚王国摄政（Landesverweser）乔治·冯·波捷布拉德（Georg von Podiebrad）先生与艾岑（Eitzing）的乌尔里希·艾辛格（Ulrich Eitzinger）全副武装地在国王拉斯洛护送下骑马到达多瑙河外桥（äußere Donaubrücke），尊贵的君主拉斯洛因他们不愿进入城市而亲自前往会见他们。他们向国王陛下提议说：由于紧急事务请他前往波希米亚。此外，他们还约定在科尔瑙堡（Korneuburg）会面。</p>
+<p>随后，在圣劳伦提乌斯（Laurentius）节日前的星期日，国王拉斯洛离开维也纳，向科尔瑙堡进发。他随行的有尊贵的奥地利公爵阿尔布雷希特（Herzog Albrecht von Österreich）、巴伐利亚公爵路德维希（Ludwig）和奥托（Otto），以及其他由拉斯洛国王邀请和请求前来维也纳的各公国的顾问。他们的任务是调解拉斯洛国王与罗马凯撒间之争端。但他们未能在这一问题上取得任何成果。到达科尔瑙堡后，摄政从克罗伊岑施泰因（Kreuzenstein）前来会见国王，与国王展开会谈。国王邀请他到自己住所，饭后再次进行了谈判。然而，谈判再次失败。摄政返回克罗伊岑施泰因。</p>
+<p>第二天清晨，摄政与乌尔里希·艾辛格一起启程，前往施拉滕塔尔（Schrattenthal），而国王与上述公爵一起返回维也纳。紧接着，在圣母升天节（Mariä Aufnahme in den Himmel）后，国王与波希米亚摄政召开了另一场会议，地点在施拉滕塔尔。这次会议中，国王派遣了尊贵的帕绍主教乌尔里希（Ulrich, Bischof von Passau），迈德堡伯爵迈克尔（Graf Michael von Maidburg）、鲁迪格·冯·施塔尔亨贝格（Rüdiger von Starhemberg）、乔治·冯·普赫海姆（Georg von Puchheim）、乔治·佩克海默（Georg Perckhaimer）和康拉德·霍尔茨勒（Konrad Hölzler），命令他们与摄政商讨所有争议事项。</p>
+<p>这些使者抵达雷茨（Retz）并每天前往施拉滕塔尔。他们在此解决了此前许多未能达成一致的问题，并最终达成全面协议。此前已经决定最尊贵的君主拉斯洛国王应在圣马丁节（St. Martin）前后前往波希米亚。因为如果使者们中断与摄政的谈判，后者便会率军进军奥地利，以武力挑战那些统治并掌控此地的领主。这一点使者们知悉后，通过决议加以阻止。</p>
+<h2 id="11-拉斯洛国王前往布拉格的行程"><a href="#11-拉斯洛国王前往布拉格的行程" class="headerlink" title="11. 拉斯洛国王前往布拉格的行程"></a>11. 拉斯洛国王前往布拉格的行程</h2><p>同一年，在圣马太（Matthäus）节日前的星期一，尊贵的君主拉斯洛（König László）国王从维也纳（Wien）前往布拉格（Prag）。在那里，他派遣了几位尊贵的使节前往法国国王处，安排其女儿与拉斯洛国王的婚事。这些尊敬而高贵的使节为了此次任务，穿戴得极为华丽：他们身着金色礼服，骑着装饰精美的骏马，展示了他们主君的荣耀与尊贵。</p>
+<p>其中从奥地利（Österreich）派出的使者包括帕绍主教乌尔里希（Ulrich, Bischof von Passau），他带领着三十二匹苹果灰色的马匹——他的随从们骑在这些马匹上，身穿红色长袍——以及鲁迪格·冯·施塔尔亨贝格（Rüdiger von Starhemberg）先生和奥斯瓦尔德·埃伊青格（Oswald Eitzinger）先生。从匈牙利（Ungarn）也派遣了使者，包括卡洛恰（Kalocsa）主教以及另外两位匈牙利贵族，他们的装饰极为奢华。此外，还有两位来自波希米亚（Böhmen）的使者同行。</p>
+<p>巴黎的民众称，他们多年未曾见过如此华丽壮观的使节队伍。</p>
+<p>当时康拉德·赫尔茨勒（Herr Konrad Hölzler）担任奥地利的税务主管（Hubmeister），他在这一职位上掌握了超过其应有的权力，甚至企图控制国王。这使得他不受波希米亚代理执政官乌尔里希·埃伊青格（Ulrich Eitzinger）先生、奥地利的多位贵族以及普通民众的欢迎。他也随国王前往布拉格（Prag）。</p>
+<p>他此前在维也纳被指派负责确保前往法国的使节获得一切必要的补给。他总是回答大家不用担心，他会妥善安排。但凭借其职位，他占有多处丰厚的产业和城堡（特别是古滕施泰因（Gutenstein）和克林根贝格（Klingenberg）），这些为他带来了不菲的收入。</p>
+<p>当国王在布拉格为前往法国的使节准备好公函和其他任务后，霍尔茨勒被要求履行补给职责。他却回答说，他没有所需的资金。因此，波希米亚代理执政官和国王的顾问严厉指责他，指出他曾多次保证补给无忧，现在却未能兑现。他辩称，原本承诺给他的资金他从未收到。顾问们将此事呈报给国王。在国王的议会上，多位顾问一致决定立即逮捕霍尔茨勒，因为他的背信行为给国王带来了极大的羞辱。于是，他被逮捕并在布拉格的塔楼中关押了一整年，最终以一万四千古尔登（Gulden）的赎金获释。他与其兄弟利奥波德（Leopold）的财产在布拉格被没收，城堡也被强行夺走。</p>
+<p>同一霍尔茨勒还曾控制住被俘的匈雅提·马加什（Mátyás von Hunyadi），并将其带往伦巴赫（Lembach）。随后，按照国王的命令，马加什被齐格蒙德·埃伊青格（Sigmund Eitzinger）及其他贵族护送到布拉格。在国王去世后，马加什被代理执政官以五万古尔登赎回。之后，马加什娶了代理执政官夫人的侄女，并在特伦钦（Trenčín）成婚。随后，二人被送往布达（Ofen），并由此成为匈牙利的国王。他以八万古尔登从罗马皇帝手中赎回王冠，并在斯托尔韦森堡（Stuhlweißenburg）加冕。</p>
+<p>同一年，在圣西蒙与圣犹达（Simon und Judas）节日当天，尊贵的乌尔里希·埃伊青格（Ulrich Eitzinger von Eitzing）、齐格蒙德·埃伊青格（Sigmund Eitzinger）、尼克拉斯·特鲁赫塞斯·冯·施塔茨（Niklas Truchsess von Staatz）、齐格蒙德·冯·弗里茨斯多夫（Sigmund von Fritzesdorf）及其他顾问抵达维也纳（Wien），罢免了市长、市法官和市议会成员，尽管这些人并无过错。取而代之，他们任命雅各布·施塔希（Jakob Starch）为市长，汉斯·安格费尔德（Hans Angerfelder）为法官，并任命其他几位市民为新议会成员。</p>
+<p>此事引发了城市内许多议论，因在如此特殊的日子、恰逢万圣节前夕罢免了一批体面的官员，且当时并无在这一年度时段更换议会的惯例。这一变动最终在市民中引发了极大的纷争，正如后来所显现的那样。</p>
+<p>同一年，在万圣节（Allerheiligen）后的星期三，乌尔里希·埃伊青格及波希米亚（Böhmen）的顾问们开始在维也纳居中调停罗马皇帝（Römischer Kaiser）与拉斯洛国王（König László）之间的纠纷。经过多次阴谋与艰难谈判，这些尊贵的贵族与罗马皇帝展开交涉，但未能与皇帝陛下达成任何协议。然而，最终，这些贵族向皇帝陛下提出了一些有助于和解的方案，皇帝对此表示接受。</p>
+<p>因此，在这一天，最尊贵的罗马皇帝与拉斯洛国王连同他们的国家与臣民，在这些贵族的斡旋下达成了完全的和解与统一。随后，埃伊青格及波希米亚的贵族们前往佩陶（Pettau），在那里他们调解了维托维茨（Vitovec）与罗马皇帝之间的矛盾，使双方也实现了和解。</p>
+<h2 id="12-拉斯洛国王之死"><a href="#12-拉斯洛国王之死" class="headerlink" title="12. 拉斯洛国王之死"></a>12. 拉斯洛国王之死</h2><p>同一年，在圣克莱门（Klemens）节日当天，尊贵的君主、匈牙利与波希米亚的国王、奥地利的大公及摩拉维亚（Mähren）的藩侯等头衔的持有者——拉斯洛（László）国王，在布拉格（Prag）的皇家官邸中，怀着深切的虔诚，在接受了神圣的圣事后，于其十八岁之年离世。他被安葬在温塞尔山（Wenzelsberg）上的其曾祖父、查理皇帝（Kaiser Karl）的陵墓中。</p>
+<p>他的忠实臣民，无论贫富、贵族或平民，尤其是奥地利（Österreich）地区的人民，以及维也纳（Wien）城中的居民，都为这场令人悲痛的逝世洒下了热泪。在他去世后，奥地利的土地几乎在各个角落都遭遇了前所未有的掠夺、抢劫、纵火和强迫臣服，导致了严重的破坏与荒废，正如以下所述。</p>
+<p>同一年，在圣托马斯（Thomas）节日前的星期一，乌尔里希·埃伊青格（Ulrich Eitzinger）与波希米亚（Böhmen）的贵族们从罗马皇帝（Römischer Kaiser）处返回维也纳（Wien）。普通百姓指责埃伊青格，说他将他们的君主从奥地利（Österreich）带到布拉格（Prag），最终导致了他的死亡。</p>
+<p>民间传言纷纷，有人说，那位无辜的小羔羊——这位虔诚的君主，在其年轻岁月里热爱正义、保护穷人的殷勤君主——是被人毒死的；也有人认为他是死于瘟疫。这些议论众说纷纭，莫衷一是。</p>
+<p>这位尊贵的君主在青年时期，远离一切不体面的恶行与罪孽。当齐利伯爵（Graf von Cilli）及其他人试图引导他接近女性时，他总是表现得非常害羞。当他目睹淫乱或不体面的场景时，他会招呼一位他信任的人，悄悄请求对方带他离开。</p>
+<p>随后，在奥地利的下一次领地议会（Landstände）召开之前，奥地利由一些有影响力的贵族执掌政务。然而，这期间，奥地利贵族之间，尤其是维也纳市民之间，充满了分歧与矛盾，这些纷争最终酿成了更大的祸害。</p>
+<p>尊贵的君主拉斯洛国王（König László）选定法国国王的女儿、贞女玛格达莱纳（Magdalena）为他的妻子。他派遣了来自王国和诸侯领地的最杰出使节前往法国，包括匈牙利王国（Königreich Ungarn）的卡洛恰主教（Bischof von Kalocsa）和波洛茨的拉斯洛（László von Polotz），波希米亚（Böhmen）的兹登科·冯·施特恩贝格（Zdenko von Sternberg）和特尔斯卡（Terska），以及奥地利（Österreich）的帕绍主教（Bischof von Passau）、鲁迪格·冯·施塔尔亨贝格（Rüdiger von Starhemberg）和奥斯瓦尔德·埃伊青格（Oswald Eitzinger），他们共率领了约五百匹马的队伍。</p>
+<p>当上述使节与法国国王达成婚约之际，传来了拉斯洛国王去世的消息。当这件事传到贞女玛格达莱纳以及她的父亲和母亲耳中时，玛格达莱纳痛苦地哀悼和哭泣。法国国王为拉斯洛国王在图尔（Tours）举办了一场格外隆重的追悼仪式。</p>
+<p>在这一悲剧性事件之后，使节们离开法国返回各自的家乡，并于1458年狂欢节前的星期五抵达帕绍（Passau）。</p>
+<h2 id="13-公元1458年"><a href="#13-公元1458年" class="headerlink" title="13.公元1458年"></a>13.公元1458年</h2><p>在拉斯洛国王去世后，奥地利（Österreich）地区出现了三位继承人，分别是罗马皇帝弗里德里希（Friedrich）、他的弟弟阿尔布雷希特公爵（Herzog Albrecht）以及他们的堂兄齐格蒙德公爵（Herzog Sigmund）。</p>
+<p>同年，奥地利政府召集了一次领地议会（Landtag），议会定于圣阿格尼丝（Agnes）节日在维也纳（Wien）召开。在会上，领地议会成员将讨论应如何对待上述几位领主和贵族的统治权要求。议会上，奥地利四个区域的代表一致决定，在三位继承人之间达成协议之前，不向任何一方效忠或表示服从。</p>
+<p>由于每位继承人都声称自己有权统治奥地利，领地议会结束后的奥地利依然处于无政府状态。尽管如此，乌尔里希·埃伊青格（Ulrich Eitzinger）、绍恩贝格（von Schaunberg）、迈德贝格（von Maidberg）和瓦尔塞（von Wallsee）等人成功说服了罗马皇帝及两位公爵，将临时的行政权移交给他们。他们代表领地议会，以领地名义对奥地利进行治理，直到下一次领地议会召开。</p>
+<h2 id="14-关于马加什·科尔维努斯（Matyas-Corvinus）如何被选为匈牙利国王"><a href="#14-关于马加什·科尔维努斯（Matyas-Corvinus）如何被选为匈牙利国王" class="headerlink" title="14.关于马加什·科尔维努斯（Mátyás Corvinus）如何被选为匈牙利国王"></a>14.关于马加什·科尔维努斯（Mátyás Corvinus）如何被选为匈牙利国王</h2><p>同一年，在拉斯洛国王（König László）去世后，匈牙利的贵族和领地议会（Landstände）于主显节（Dreikönigstag）当天在布达（Ofen）附近草原上召开了一次领地议会。在这次会议上，贵族们在迈克尔·塞拉迪（Michael Seladij）的支持下选定并推举了当时仍被波希米亚代理执政官（Landesverweser）囚禁的马加什伯爵（Graf Mátyás）为匈牙利国王。</p>
+<p>这一决定激怒了许多强大的匈牙利贵族，但他们不敢公开反对领地议会的决议。因为在匈牙利王国的历史上，从未有过像马加什这样出身卑微的人被选为国王。在匈牙利的传统中，国王通常是从王室后裔中选出，而不是像马加什这样出身低微的家族。</p>
+<h2 id="15-关于波希米亚国王的选举"><a href="#15-关于波希米亚国王的选举" class="headerlink" title="15.关于波希米亚国王的选举"></a>15.关于波希米亚国王的选举</h2><p>同一年，波希米亚（Böhmen）的领地议会（Landstände）于大斋节（Fastensonntag）第一主日当天在布拉格（Prag）召开了一次会议。在会议上，议会成员一致选举乔治·冯·波捷布拉德（Jörg von Podiebrad）为波希米亚国王（König），他此前曾是该王国的代理执政官（Landesverweser）。议会将这一选举结果以正式书信与印章呈报罗马皇帝（Römischer Kaiser），作为帝国最高选帝侯（Kurfürsten）的决定。</p>
+<p>乔治·冯·波捷布拉德在普通民众中拥有最广泛的支持，因为他信仰与他们相同的宗教，并支持《巴塞尔会议协议》（Kompaktaten）。因此，即使是波希米亚最具权势的贵族也不敢反对这次选举结果。</p>
+<h2 id="16-关于埃伊青格被捕的事件"><a href="#16-关于埃伊青格被捕的事件" class="headerlink" title="16.关于埃伊青格被捕的事件"></a>16.关于埃伊青格被捕的事件</h2><p>同一年，在大斋节第三主日（Fastensonntag）傍晚，奥地利（Österreich）尊贵的大公阿尔布雷希特（Herzog Albrecht）邀请乌尔里希·埃伊青格（Ulrich Eitzinger）前往他的布拉格宅邸（Praghaus）。埃伊青格出于对大公的信任前往，但在谈话中他逐渐意识到自己将无法以自由之身离开。埃伊青格向大公进行辩解，保证他从未反对过大公，也从未建议任何人损害大公的遗产。如果是由他决定，他会毫不犹豫地支持大公成为执政者。</p>
+<p>然而，大公并未接受埃伊青格的辩解，并说道：“埃伊青格，你是我的囚犯！”埃伊青格回答道：“仁慈的殿下，无论何地得知此事的人都会认为，这不利于殿下的声誉。因为我是出于对殿下的信任而来，也完全没有意识到殿下对我有任何敌意。”</p>
+<p>这场谈话期间，房内只有大公和埃伊青格二人。直到大公对埃伊青格大声斥责时，随从和顾问才匆匆赶来，将埃伊青格抓住并送入监牢。这一事件引发了领地顾问和维也纳（Wien）市民对大公的强烈抗议，他们试图解救乌尔里希·埃伊青格，却未能成功。</p>
+<p>最终，顾问们要求大公解释埃伊青格的罪行，导致殿下将其囚禁。对此，大公声称埃伊青格涉及伪造文件和使用毒药。然而，人们听到的只是指控，却未见任何实际证据或具体行为。</p>
+<p>同一年，在棕枝主日（Palmsonntag）后的星期三，尊贵的奥地利大公阿尔布雷希特（Herzog Albrecht von Österreich）在多位奥地利领地贵族及维也纳（Wien）支持者的协助下，攻占了由莱德文科（Ledwenko）建立的两个塔堡（Tabore）。这些塔堡分别位于马尔施兰（Marchland）内的霍夫（Hof）附近以及马尔施河（March）另一侧的石堡（Stein），被莱德文科及其大量盗贼和强盗用作巢穴，对当地造成了极大的危害。</p>
+<p>在这次行动中，约四百名盗匪被俘虏，其中大约两百五十人随后在神圣复活节周（Osterwoche）期间于维也纳被绞死。其余的俘虏中，一些人在监牢中逐渐死去，另一些人则被释放。</p>
+<p>在攻占上述两个塔堡的战斗中，阿尔布雷希特大公的一位亲信、正直的年轻骑士格哈德·弗罗瑙尔（Gerhard Fronauer）遭到射击，因伤不治身亡。</p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author：<a href="https://Friedrich-afk.github.io">被猹丝血反杀的闰土</a>
+            <p>Link：<a href="https://friedrich-afk.github.io/2024/12/27/%E3%80%8A1454-1467%E5%B9%B4%E5%A5%A5%E5%9C%B0%E5%88%A9%E7%BC%96%E5%B9%B4%E5%8F%B2%EF%BC%9A%E6%A0%A1%E5%8B%98%E3%80%81%E7%BF%BB%E8%AF%91%E4%B8%8E%E6%B3%A8%E9%87%8A%E3%80%8B%EF%BC%88Die%20%C3%96sterreichische%20Chronik%20der%20Jahre%201454-1467%EF%BC%9AEdition,%20%C3%9Cbersetzung,%20Kommentar%EF%BC%89/">https://friedrich-afk.github.io/2024/12/27/%E3%80%8A1454-1467%E5%B9%B4%E5%A5%A5%E5%9C%B0%E5%88%A9%E7%BC%96%E5%B9%B4%E5%8F%B2%EF%BC%9A%E6%A0%A1%E5%8B%98%E3%80%81%E7%BF%BB%E8%AF%91%E4%B8%8E%E6%B3%A8%E9%87%8A%E3%80%8B%EF%BC%88Die%20%C3%96sterreichische%20Chronik%20der%20Jahre%201454-1467%EF%BC%9AEdition,%20%C3%9Cbersetzung,%20Kommentar%EF%BC%89/</a>
+            <p>Publish date：<a href="https://friedrich-afk.github.io/2024/12/27/%E3%80%8A1454-1467%E5%B9%B4%E5%A5%A5%E5%9C%B0%E5%88%A9%E7%BC%96%E5%B9%B4%E5%8F%B2%EF%BC%9A%E6%A0%A1%E5%8B%98%E3%80%81%E7%BF%BB%E8%AF%91%E4%B8%8E%E6%B3%A8%E9%87%8A%E3%80%8B%EF%BC%88Die%20%C3%96sterreichische%20Chronik%20der%20Jahre%201454-1467%EF%BC%9AEdition,%20%C3%9Cbersetzung,%20Kommentar%EF%BC%89/">December 27th 2024, 5:12:12 pm</a>
+            <p>Update date：<a href="https://friedrich-afk.github.io/2024/12/27/%E3%80%8A1454-1467%E5%B9%B4%E5%A5%A5%E5%9C%B0%E5%88%A9%E7%BC%96%E5%B9%B4%E5%8F%B2%EF%BC%9A%E6%A0%A1%E5%8B%98%E3%80%81%E7%BF%BB%E8%AF%91%E4%B8%8E%E6%B3%A8%E9%87%8A%E3%80%8B%EF%BC%88Die%20%C3%96sterreichische%20Chronik%20der%20Jahre%201454-1467%EF%BC%9AEdition,%20%C3%9Cbersetzung,%20Kommentar%EF%BC%89/">December 27th 2024, 5:21:07 pm</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/my-blog/2024/12/27/%E6%A4%85%E5%AD%90%E5%9E%AB%E4%B9%8B%E6%AD%BB/" title="椅子垫之死">
+                    <div class="prevTitle">椅子垫之死</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:12345@qq.com" class="iconfont-archer email" title="email" ></a>
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+                <span class="iconfont-archer wechat" title="wechat">
+                    <img class="profile-qr" src="/my-blog/assets/example_qr.png" />
+                </span>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%B3%E4%BA%8E1454%E5%B9%B4%E6%B3%A2%E5%85%B0%EF%BC%88Polan%EF%BC%89%E4%B8%8E%E6%99%AE%E9%B2%81%E5%A3%AB%EF%BC%88Prew%CC%81ssen%EF%BC%89%E9%A2%86%E4%B8%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">1.关于1454年波兰（Polan）与普鲁士（Preẃssen）领主之间的事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%AC%E5%85%831457%E5%B9%B4"><span class="toc-number">2.</span> <span class="toc-text">2.公元1457年</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%85%B3%E4%BA%8E%E5%BD%97%E6%98%9F"><span class="toc-number">3.</span> <span class="toc-text">3. 关于彗星</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%85%B3%E4%BA%8E%E7%AA%81%E5%8E%A5%E5%87%AF%E6%92%92%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%A0%BC%E8%8E%B1%E5%BE%B7%E8%A6%81%E5%A1%9E"><span class="toc-number">4.</span> <span class="toc-text">4. 关于突厥凯撒与贝尔格莱德要塞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%B3%E4%BA%8E%E5%8D%81%E5%AD%97%E5%86%9B%E4%B8%9C%E5%BE%81%E5%AF%B9%E6%8A%97%E5%9C%9F%E8%80%B3%E5%85%B6%E4%BA%BA%E7%9A%84%E5%86%9B%E4%BA%8B%E8%A1%8C%E5%8A%A8"><span class="toc-number">5.</span> <span class="toc-text">5.关于十字军东征对抗土耳其人的军事行动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%B3%E4%BA%8E%E6%8B%89%E6%96%AF%E6%B4%9B%E5%9B%BD%E7%8E%8B%E8%BF%9B%E5%86%9B%E5%8C%88%E7%89%99%E5%88%A9%E5%AF%B9%E6%8A%97%E5%9C%9F%E8%80%B3%E5%85%B6%E4%BA%BA%E7%9A%84%E5%86%9B%E4%BA%8B%E8%A1%8C%E5%8A%A8"><span class="toc-number">6.</span> <span class="toc-text">6.关于拉斯洛国王进军匈牙利对抗土耳其人的军事行动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%85%AC%E5%85%831457%E5%B9%B4%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">7.公元1457年事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%89%AC%C2%B7%E7%BB%B4%E6%89%98%E9%9F%A6%E8%8C%A8%E5%9C%A8%E9%87%87%E5%88%97%E4%BF%98%E8%99%8F%E5%87%AF%E6%92%92%E9%A1%BE%E9%97%AE%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">8. 扬·维托韦茨在采列俘虏凯撒顾问的事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%91%A1%E8%90%84%E8%97%A4%E9%81%AD%E9%81%87%E9%9C%9C%E5%86%BB"><span class="toc-number">9.</span> <span class="toc-text">9. 葡萄藤遭遇霜冻</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%8B%89%E6%96%AF%E6%B4%9B%E5%9B%BD%E7%8E%8B%E4%BB%8E%E5%AF%B9%E5%9C%9F%E8%80%B3%E5%85%B6%E4%BA%BA%E7%9A%84%E8%BF%9C%E5%BE%81%E8%BF%94%E5%9B%9E%E7%BB%B4%E4%B9%9F%E7%BA%B3"><span class="toc-number">10.</span> <span class="toc-text">10. 拉斯洛国王从对土耳其人的远征返回维也纳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%8B%89%E6%96%AF%E6%B4%9B%E5%9B%BD%E7%8E%8B%E5%89%8D%E5%BE%80%E5%B8%83%E6%8B%89%E6%A0%BC%E7%9A%84%E8%A1%8C%E7%A8%8B"><span class="toc-number">11.</span> <span class="toc-text">11. 拉斯洛国王前往布拉格的行程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%8B%89%E6%96%AF%E6%B4%9B%E5%9B%BD%E7%8E%8B%E4%B9%8B%E6%AD%BB"><span class="toc-number">12.</span> <span class="toc-text">12. 拉斯洛国王之死</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%85%AC%E5%85%831458%E5%B9%B4"><span class="toc-number">13.</span> <span class="toc-text">13.公元1458年</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%85%B3%E4%BA%8E%E9%A9%AC%E5%8A%A0%E4%BB%80%C2%B7%E7%A7%91%E5%B0%94%E7%BB%B4%E5%8A%AA%E6%96%AF%EF%BC%88Matyas-Corvinus%EF%BC%89%E5%A6%82%E4%BD%95%E8%A2%AB%E9%80%89%E4%B8%BA%E5%8C%88%E7%89%99%E5%88%A9%E5%9B%BD%E7%8E%8B"><span class="toc-number">14.</span> <span class="toc-text">14.关于马加什·科尔维努斯（Mátyás Corvinus）如何被选为匈牙利国王</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%85%B3%E4%BA%8E%E6%B3%A2%E5%B8%8C%E7%B1%B3%E4%BA%9A%E5%9B%BD%E7%8E%8B%E7%9A%84%E9%80%89%E4%B8%BE"><span class="toc-number">15.</span> <span class="toc-text">15.关于波希米亚国王的选举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E5%85%B3%E4%BA%8E%E5%9F%83%E4%BC%8A%E9%9D%92%E6%A0%BC%E8%A2%AB%E6%8D%95%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">16.</span> <span class="toc-text">16.关于埃伊青格被捕的事件</span></a></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 3
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/my-blog/2024/12/27/hello-world/">Hello World</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/27</span>
+            <a class="archive-post-title" href="/my-blog/2024/12/27/%E3%80%8A1454-1467%E5%B9%B4%E5%A5%A5%E5%9C%B0%E5%88%A9%E7%BC%96%E5%B9%B4%E5%8F%B2%EF%BC%9A%E6%A0%A1%E5%8B%98%E3%80%81%E7%BF%BB%E8%AF%91%E4%B8%8E%E6%B3%A8%E9%87%8A%E3%80%8B%EF%BC%88Die%20%C3%96sterreichische%20Chronik%20der%20Jahre%201454-1467%EF%BC%9AEdition,%20%C3%9Cbersetzung,%20Kommentar%EF%BC%89/">[Untitled Post]</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/27</span>
+            <a class="archive-post-title" href="/my-blog/2024/12/27/%E6%A4%85%E5%AD%90%E5%9E%AB%E4%B9%8B%E6%AD%BB/">椅子垫之死</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/my-blog/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://Friedrich-afk.github.io",
+        root: siteMetaRoot,
+        author: "被猹丝血反杀的闰土"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/my-blog/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/my-blog/scripts/share.js" async></script>
+        <!-- mermaid -->
+    </body>
+</html>
