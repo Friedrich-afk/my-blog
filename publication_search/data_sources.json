@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Crossref",
+    "type": "crossref",
+    "enabled": true,
+    "options": {}
+  },
+  {
+    "name": "arXiv",
+    "type": "arxiv",
+    "enabled": true,
+    "options": {}
+  }
+]
